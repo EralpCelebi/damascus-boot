@@ -2,12 +2,11 @@
 
 Damascus, is an x86 bootloader written and commented for educational purposes.
 
-## State
-[x] ATA - Loading the second stage bootloader.
-[ ] A20 - Enabling the A20 line.
-...
+## Current State
+- [x] `ATA` Loads the second stage from HDD.
+- [ ] `A20` Enables the A20 line.
 
-## Usage
+## Compiling
 ```sh
 make        # Compiles the bootloader.
 make run    # Runs using qemu.
