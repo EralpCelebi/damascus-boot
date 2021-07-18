@@ -53,7 +53,7 @@ a20_checks:
     ; Part: A20 line checking.
     ; Description:  If the A20 line is not set, the memory the CPU can access revolves back to
     ;               the start after the 1 MB mark. Using this we can access the same memory
-    ;               using a segment offset. If A20 line is not set, we won't overwrite the
+    ;               using a segment offset. If A20 line is set, we won't overwrite the
     ;               memory.     
 
     mov [es:si], word 0xdead    ; Writes '0xdead' to '0x0000:0x0500'
