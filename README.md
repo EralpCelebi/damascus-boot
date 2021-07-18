@@ -3,8 +3,9 @@
 Damascus, is an x86 bootloader written and commented for educational purposes.
 
 ## Current State
-- [x] `ATA` Loads the second stage from HDD.
-- [ ] `A20` Enables the A20 line.
+- [x] `ATA`     Loads the second stage from HDD.
+- [x] `A20`     Enables the A20 line.
+- [ ] `GDT`     Sets up a temporary GDT. 
 
 ## Compiling
 ```sh

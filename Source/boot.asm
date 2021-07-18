@@ -1,3 +1,19 @@
+; Copyright (C) 2021 Eralp Çelebi
+; Author: Çelebi, Eralp <eralp.celebi.personal@gmail.com>
+;
+; This program is free software: you can redistribute it and/or modify
+; it under the terms of the GNU General Public License as published by
+; the Free Software Foundation, either version 3 of the License, or
+; (at your option) any later version.
+;
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+;
+; You should have received a copy of the GNU General Public License
+; along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 ; Damascus Boot Project (2020-2021)
 ; 
 ; Maintainer: Eralp Çelebi <eralp.celebi.personal@gmail.com>
@@ -13,10 +29,10 @@ oops:               ; Special memory area for error-codes. Written on errors for
 
 %include "Source/ata.asm"  ; Needed for loading the second stage.
 
-    ; Type: Label
-    ; Description:  This part sets up the environment for future use. Loads the
-    ;               second part of the bootloader from the HDD using ATA interrupts.
-    ; Arguments:    None
+; Type: Label
+; Description:  This part sets up the environment for future use. Loads the
+;               second part of the bootloader from the HDD using ATA interrupts.
+; Arguments:    None
 
 boot0:
 
@@ -59,13 +75,18 @@ boot0:
 
 ; ================== Sector  Barier ================== ;
 
+%include "Source/a20.asm"
 
-    ; Type: Label
-    ; Description:  This is the second part of the bootloader that is not automatically
-    ;               loaded by the BIOS. It is loaded by 'boot0' using the BIOS ATA interrupts
-    ;               at address 0x7e00. 
-    ; Arguments:    None.
+; Type: Label
+; Description:  This is the second part of the bootloader that is not automatically
+;               loaded by the BIOS. It is loaded by 'boot0' using the BIOS ATA interrupts
+;               at address 0x7e00. 
+; Arguments:    None.
 
 boot1:
+    call a20_checks
+    
     mov ax, 0xdead
-    jmp boot1
+
+.end:
+    jmp .end

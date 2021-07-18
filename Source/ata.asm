@@ -19,8 +19,8 @@
 ; Version: v0.1
 ; Description: Code for handling ATA using BIOS interrupts.
 
-    ; Type: Struct
-    ; Description: Disk Address Packet. Used for reading/writing sectors.
+; Type: Struct
+; Description: Disk Address Packet. Used for reading/writing sectors.
 
 ata_dap:
     db 16       ; Size of the packet, 16-bytes for 48-bit LBA.
@@ -32,8 +32,8 @@ ata_dap:
     dd 0x0      ; Upper 16-bits of LBA.
 
 
-    ; Type: Struct
-    ; Description: Variables concerning the ATA 'class'.
+; Type: Struct
+; Description: Variables concerning the ATA 'class'.
 
 ata_flags:
     db 0    ; isChecked, set when the 'ata_checks' function succeeds.
@@ -80,15 +80,15 @@ ata_checks:
     ret
 
 
-    ; Type: Function
-    ; Description:  Edits the DAP's buffer address. 
-    ; Arguments:    'eax' -> Pointer to the buffer. (eg. 0x0000:0x7e00)
-    ;               'ebx' -> Lower 32-bits of the LBA address.
-    ; Returns:      None
-    ;
-    ; Notes:        This function does not use the upper 16-bits of the LBA address.
-    ;               This means you won't be able to read the fully supported 48-bit addresses of LBA
-    ;               addressing. Wasn't planning on using it so didnt implement it.
+; Type: Function
+; Description:  Edits the DAP's buffer address. 
+; Arguments:    'eax' -> Pointer to the buffer. (eg. 0x0000:0x7e00)
+;               'ebx' -> Lower 32-bits of the LBA address.
+; Returns:      None
+;
+; Notes:        This function does not use the upper 16-bits of the LBA address.
+;               This means you won't be able to read the fully supported 48-bit addresses of LBA
+;               addressing. Wasn't planning on using it so didnt implement it.
 
 ata_set_buffer:
     pushad
@@ -103,10 +103,10 @@ ata_set_buffer:
     ret
 
 
-    ; Type: Function
-    ; Description:  Reads a sector from an hard-drive.
-    ; Arguments:    'dl' -> Specifies the drive number.
-    ; Returns:      None
+; Type: Function
+; Description:  Reads a sector from an hard-drive.
+; Arguments:    'dl' -> Specifies the drive number.
+; Returns:      None
 
 ata_read_sector:
     pushad

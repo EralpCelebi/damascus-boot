@@ -37,4 +37,5 @@ damascus-boot.img: Object/boot.bin
 	@dd if=Object/boot.bin of=$@ 					# Writes the bootloader binary to the image.
 
 Object/%.bin: Source/%.asm
+	@mkdir -p Object
 	@$(as) $(asflags) $^ -o $@						# Compiles the binary.
